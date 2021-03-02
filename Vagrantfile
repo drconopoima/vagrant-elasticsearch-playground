@@ -3,6 +3,13 @@
 
 Vagrant.configure("2") do |config|
 
+  config.vm.provider "virtualbox" do |vb|
+    # global memory in MB
+    vb.memory = "1536"
+  end
+  # Don't check for updates to the configured box on every vagrant up.
+  config.vm.box_check_update = false
+
   config.vm.define "master1", primary: true do |master1|
     master1.vm.box = "centos/7"
     master1.vm.hostname = "master1"
