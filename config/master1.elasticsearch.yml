@@ -52,7 +52,7 @@ path.logs: /var/log/elasticsearch
 #
 # Set the bind address to a specific IP (IPv4 or IPv6):
 #
-network.host: [_local_, _site_]
+network.host: ["172.29.1.101"]
 #
 # Set a custom port for HTTP:
 #
@@ -65,7 +65,7 @@ network.host: [_local_, _site_]
 # Pass an initial list of hosts to perform discovery when this node is started:
 # The default list of hosts is ["127.0.0.1", "[::1]"]
 #
-discovery.seed_hosts: ["172.29.1.10"]
+discovery.seed_hosts: ["172.29.1.101"]
 #
 # Bootstrap the cluster using an initial set of master-eligible nodes:
 #

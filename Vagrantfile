@@ -5,9 +5,9 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "master1", primary: true do |master1|
     master1.vm.box = "centos/7"
-    master1.vm.network "private_network", ip: "172.29.1.10"
+    master1.vm.hostname = "master1"
+    master1.vm.network "private_network", ip: "172.29.1.101"
     master1.vm.provision "shell", inline: <<-SHELL
-      hostnamectl set-hostname master1
       yum -y update
       rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
       cat <<-EOF >/etc/yum.repos.d/elasticsearch.repo
@@ -25,9 +25,9 @@ EOF
 
   config.vm.define "data1" do |data1|
     data1.vm.box = "centos/7"
-    data1.vm.network "private_network", ip: "172.29.1.20"
+    data1.vm.hostname = "data1"
+    data1.vm.network "private_network", ip: "172.29.1.102"
     data1.vm.provision "shell", inline: <<-SHELL
-      hostnamectl set-hostname data1
       yum -y update
       rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
       cat <<-EOF >/etc/yum.repos.d/elasticsearch.repo
@@ -45,9 +45,9 @@ EOF
 
   config.vm.define "data2" do |data2|
     data2.vm.box = "centos/7"
-    data2.vm.network "private_network", ip: "172.29.1.30"
+    data2.vm.hostname = "data2"
+    data2.vm.network "private_network", ip: "172.29.1.103"
     data2.vm.provision "shell", inline: <<-SHELL
-      hostnamectl set-hostname data2
       yum -y update
       rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
       cat <<-EOF >/etc/yum.repos.d/elasticsearch.repo
